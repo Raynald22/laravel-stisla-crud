@@ -20,16 +20,29 @@ class CrudController extends Controller
 
     public function simpan(Request $request)
     {
+        $validation = $request->validate([
+            'kode_barang' => 'required|max:10|min:3',
+            'nama_barang' => 'required|max:10|min:3'
+        ],
+
+        [
+            'kode_barang.required' => 'Harus diisi!',
+            'kode_barang.min' => 'Karakter minimal 3',
+            'nama_barang.required' => 'Harus diisi!',
+            'nama_barang.min' => 'Karakter minimal 3'
+        ]
+    );
+
         DB::table('data_barang')->insert([
             ['kode_barang' => $request->kode_barang, 'nama_barang' => $request->nama_barang]
         ]);
-        return redirect()->route('crud');
+        return redirect()->route('crud')->with('message','Data Berhasil disimpan!');
     }
 
     public function delete($id)
     {
         DB::table('data_barang')->where('id', $id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('message','Data Berhasil dihapus!');
     }
 }

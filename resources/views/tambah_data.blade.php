@@ -12,14 +12,18 @@
                     <div class="row">
                         <div class="col md 6">
                             <div class="form-group">
-                                <label>Kode Barang</label>
-                                <input type="text" name="kode_barang" class="form-control">
+                                <label @error('kode_barang') class="text-danger" @enderror>Kode Barang @error('kode_barang')
+                                  {{ $message }}
+                                @enderror</label>
+                                <input type="text" name="kode_barang" value="{{ old('kode_barang') }}" class="form-control">
                             </div>
                         </div>
                         <div class="col md 6">
                             <div class="form-group">
-                                <label>Nama Barang</label>
-                                <input type="text" name="nama_barang" class="form-control">
+                                <label @error('nama_barang') class="text-danger" @enderror>Nama Barang @error('nama_barang')
+                                  {{ $message }}
+                                @enderror</label>
+                                <input type="text" name="nama_barang" value="{{ old('nama_barang') }}" class="form-control">
                             </div>
                         </div>
                     </div>

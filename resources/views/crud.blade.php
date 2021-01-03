@@ -7,6 +7,16 @@
         <div class="col-12 col-md-12 col-lg-12">
             <a href="{{ route('cr.tambah')}}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
             <hr>
+            @if (session('message'))
+            <div class="alert alert-success alert-dismissible show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span></span>
+                    </button>
+                    {{ session('message') }}
+                </div>
+            </div>
+            @endif
             <table class="table table-bordered table-stripped">
                 <tr>
                     <th>No.</th>
